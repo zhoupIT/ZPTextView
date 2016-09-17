@@ -15,7 +15,8 @@
 @property(assign,nonatomic) NSInteger maxTextLength;
 /** 更新textView的高度 */
 @property(assign,nonatomic) float textViewHeight;
-
+/** 自适应高度 */
+@property (nonatomic,assign) BOOL isAdaptiveHeight;
 /**
  *  内容长度限制的回调
  *
