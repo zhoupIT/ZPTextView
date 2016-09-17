@@ -22,7 +22,7 @@
 @implementation ZPTextView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    if (self == [super initWithFrame:frame]) {
+    if (self = [super initWithFrame:frame]) {
         [self setup];
     }
     return self;
@@ -50,6 +50,7 @@
 
 -(void)layoutSubviews
 {
+    [super layoutSubviews];
     float left=kMargin,top=kMargin+2,hegiht=self.bounds.size.height;
     self.placeholdeWidth = CGRectGetWidth(self.frame)-2*left;
     CGRect frame = self.placeholder_Label.frame;
@@ -128,6 +129,26 @@
     else{
         _placeholder_Label.hidden=NO;
     }
+    if (self.isAdaptiveHeight) {
+        CGRect frame = self.frame;
+        CGSize constraintSize = CGSizeMake(frame.size.width, MAXFLOAT);
+        CGSize size = [self sizeThatFits:constraintSize];
+        if (size.height<=frame.size.height) {
+            size.height=frame.size.height;
+        }else{
+            if (size.height >= MAXFLOAT)
+            {
+                size.height = MAXFLOAT;
+                self.scrollEnabled = YES;   // 允许滚动
+            }
+            else
+            {
+                self.scrollEnabled = NO;    // 不允许滚动
+            }
+        }
+        self.textViewHeight = size.height;
+    }
+    
     
     NSString *lang = [[self.nextResponder textInputMode] primaryLanguage]; // 键盘输入模式
     
@@ -187,4 +208,7 @@
     _placeholder_Label.textColor=placeholder_color;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
