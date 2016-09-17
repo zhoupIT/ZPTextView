@@ -9,22 +9,22 @@ Drag and drop to your project 拖拽到你的项目.
 textView.placeholder = @"开始新的一天咯(限制10个字符)";
 textView.backgroundColor = [UIColor whiteColor];</code></pre>
   
-/** 限制字符的回调 */    
+<pre><code>/** 限制字符的回调 */    
 [textView addMaxTextLengthWithMaxLength:10 andEvent:^(ZPTextView *text) {
         NSLog(@"限制了字符个数");
-}];
+}];</code></pre>
   
-/** 开始编辑的回调 */  
+<pre><code>/** 开始编辑的回调 */  
 [textView addTextViewBeginEvent:^(ZPTextView *text) {
         NSLog(@"开始编辑");
-}];
+}];</code></pre>
 
-/** 结束编辑的回调 */  
+<pre><code>/** 结束编辑的回调 */  
 [textView addTextViewEndEvent:^(ZPTextView *text) {
        NSLog(@"结束编辑");
-}];
+}];</code></pre>
     
-[self.view addSubview:textView];
+<pre><code>[self.view addSubview:textView];</code></pre>
 
 
 ![示例图片](https://github.com/zhoupIT/ZPTextView/blob/master/textViewShow.gif?raw=true) 
