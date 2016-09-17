@@ -1,13 +1,13 @@
 # ZPTextView
 自定义textView,可以显示placeholder,可以修改placeholder字体颜色、大小.还可以设置textview的限制字数.
 
-#Adding to your project:#
+##Adding to your project:##
 Drag and drop to your project 拖拽到你的项目.
 
-Basic usage:
-ZPTextView *textView = [[ZPTextView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 80)];
+##Basic usage:##
+<pre><code>ZPTextView *textView = [[ZPTextView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 80)];
 textView.placeholder = @"开始新的一天咯(限制10个字符)";
-textView.backgroundColor = [UIColor whiteColor];
+textView.backgroundColor = [UIColor whiteColor];</code></pre>
   
 /** 限制字符的回调 */    
 [textView addMaxTextLengthWithMaxLength:10 andEvent:^(ZPTextView *text) {
